@@ -7,6 +7,18 @@
   <version>0.0.4-SNAPSHOT</version>
   <name>JenkinsWar Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <distributionManagement>
+<repository>
+    <id>releases</id>
+    <!-- CHANGE HERE by your team nexus server -->
+    <url>http://44.202.0.131:8081/repository/maven-releases/</url>
+</repository>
+  <snapshotRepository>
+    <id>snapshots</id>
+    <!-- CHANGE HERE by your team nexus server -->
+    <url>http://44.202.0.131:8081/repository/maven-snapshots/</url>
+   </snapshotRepository>
+</distributionManagement>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
