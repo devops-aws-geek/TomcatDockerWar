@@ -3,19 +3,19 @@ pipeline {
      stages {
           stage("Compile") {
                steps {
-                    sh "/usr/bin/mvn compile"
+                    sh "/var/lib/jenkins/sw/maven/bin/mvn compile"
                }
           }
           stage("Unit test") {
                steps {
-                    sh "/usr/bin/mvn test"
+                    sh "/var/lib/jenkins/sw/maven/bin/mvn test"
                }
           }
      
     
 stage("Package") {
      steps {
-          sh "/usr/bin/mvn package"
+          sh "/var/lib/jenkins/sw/maven/bin/mvn package"
      }
 }
 stage("Docker build") {
@@ -30,7 +30,7 @@ stage("Deploy to staging") {
           
           sh "docker stop \$(docker ps -qa)"
           sh "docker rm \$(docker ps -qa)"
-          sh "docker run -d -it -v /var/lib/jenkins/workspace/pipelne-with-docker/target/:/usr/local/tomcat/webapps/ -p 8081:8080 --name Testtomcat deepak_tomcat"
+          sh "docker run -d -it -v /var/lib/jenkins/workspace/tomcat-dockerize-app-demo/target/:/usr/local/tomcat/webapps/ -p 8081:8080 --name Testtomcat deepak_tomcat"
      }
 }
 
